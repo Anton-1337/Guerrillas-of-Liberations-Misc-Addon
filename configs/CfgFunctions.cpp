@@ -266,6 +266,7 @@ class CfgFunctions // Defines a function
 			class RestCamp_WakeUp {};
 			class GarrisonBuildingsInArea {};
 			class Ignore_PlayerAir {};
+			class Ignore_PlayerAir_Manager {};
 		};	
 
 		class OKS_SDV {
