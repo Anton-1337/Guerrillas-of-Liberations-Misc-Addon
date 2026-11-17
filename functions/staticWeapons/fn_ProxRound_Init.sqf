@@ -172,16 +172,14 @@ if (_overwriteProxRoundDefaults) then {
     
     private _capable = (allTurrets _vehicle) findIf {
         private _turret = _x;
-        private _mag = "";
-        private _weapon = "";
-        {
-            if (_x isEqualType "" && _x != "" && isClass (configFile >> "CfgMagazines" >> _x)) then {
-                _mag = _x;
-                _weapon = weaponState [_vehicle, _turret] select 0;
-                diag_log format ["[PROXROUND_INIT]   Turret %1: weapon=%2 magazine=%3", _turret, _weapon, _mag];
-                exitWith {};
-            };
-        } forEach (weaponState [_vehicle, _turret]);
+        private _state = weaponState [_vehicle, _turret];
+        private _magIndex = _state findIf {
+            _x isEqualType "" && {_x != ""} && {isClass (configFile >> "CfgMagazines" >> _x)}
+        };
+        private _mag = if (_magIndex < 0) then { "" } else { _state select _magIndex };
+        if (_mag isNotEqualTo "") then {
+            diag_log format ["[PROXROUND_INIT]   Turret %1: weapon=%2 magazine=%3", _turret, _state select 0, _mag];
+        };
         if (_mag isEqualTo "") then {
             diag_log format ["[PROXROUND_INIT]   Turret %1: no valid magazine found", _turret];
             false

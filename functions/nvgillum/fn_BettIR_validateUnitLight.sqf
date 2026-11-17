@@ -30,7 +30,7 @@ if (_shouldBeLit) exitWith {
         _light = [_unit] call BettIR_NVG_fnc_createLight;
     };
     private _level = ((_unit getVariable ["OKS_NVGIllum_Level", 2]) max 1) min 5;
-    _light setLightIntensity (_level * 0.042);
+    _light setLightIntensity (_level * 0.0672);
 };
 
 if (!isNull _light) then {

@@ -35,6 +35,7 @@ class ACE_DBAL_A3_Red;
         flareMaxDistance = FLAREDIST; \
         dayLight = 0; \
         irLight = 1; \
+        scale[] = {0}; \
         class Attenuation { \
             start = 10; \
             constant = 4; \
@@ -96,7 +97,7 @@ class ACE_DBAL_A3_Red;
         GOL_OX3000_VARIANT_HEADER("LS",POWER,NEXT,PREV,HINT); \
         class ItemInfo: InventoryFlashLightItem_Base_F { \
             GOL_OX3000_POINTER; \
-            class Flashlight {}; \
+            class Flashlight { scale[] = {0}; }; \
         }; \
     }
 
@@ -123,16 +124,16 @@ class GOL_OX3000: ACE_DBAL_A3_Red {
 
     class ItemInfo: InventoryFlashLightItem_Base_F {
         GOL_OX3000_POINTER;
-        GOL_OX3000_IR_LIGHT(8,140,210,300);
+        GOL_OX3000_IR_LIGHT(13,140,210,300);
     };
 };
 
 // DP: IR laser + IR illuminator.
-GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P1,"P1","GOL_OX3000_LS_P1","GOL_OX3000_FL_P4","OX3000 Dual",8,140,210,300);
-GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P2,"P2","GOL_OX3000_LS_P2","GOL_OX3000_FL_P4","OX3000 Dual",12,160,240,400);
-GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P3,"P3","GOL_OX3000_LS_P3","GOL_OX3000_FL_P4","OX3000 Dual",18,180,270,700);
-GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P4,"P4","GOL_OX3000_LS_P4","GOL_OX3000_FL_P4","OX3000 Dual",26,200,300,1000);
-GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P5,"P5","GOL_OX3000_LS_P5","GOL_OX3000_FL_P4","OX3000 Dual",36,220,330,1200);
+GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P1,"P1","GOL_OX3000_LS_P1","GOL_OX3000_FL_P4","OX3000 Dual",13,140,210,300);
+GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P2,"P2","GOL_OX3000_LS_P2","GOL_OX3000_FL_P4","OX3000 Dual",19,160,240,400);
+GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P3,"P3","GOL_OX3000_LS_P3","GOL_OX3000_FL_P4","OX3000 Dual",29,180,270,700);
+GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P4,"P4","GOL_OX3000_LS_P4","GOL_OX3000_FL_P4","OX3000 Dual",42,200,300,1000);
+GOL_OX3K_MAKE_DP(GOL_OX3000_DP_P5,"P5","GOL_OX3000_LS_P5","GOL_OX3000_FL_P4","OX3000 Dual",58,220,330,1200);
 
 // LS: IR laser only. The strength suffix is kept so cycling back restores it.
 // Entering the flashlight (from DP or LS) always starts at P4 (80%).
