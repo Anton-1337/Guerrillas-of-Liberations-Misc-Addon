@@ -23,7 +23,7 @@ of GOL_MISC_ADDON because GOL patches them.
 - **Strength:** BettIR Stepper #2 (default Ctrl + mouse wheel). Stepper #1 (Shift + wheel) works too.
   Only on foot, primary weapon selected, DP or FL mode. Clamped 20-100%.
 - **NVG illuminator (BettIR NVG):** Alt + mouse wheel (`GOL Lights` in Controls).
-  Only with NVGs down and the illuminator on. 20-100%, default 40%, saved in the profile.
+  Only with NVGs down and the illuminator on. 20-100% (100% = 35% of BettIR stock), default 40%, saved in the profile.
 
 ## BettIR patches (`configs/compat/compat_bettir.hpp`, `configs/CfgFunctions.cpp`)
 
@@ -32,15 +32,15 @@ of GOL_MISC_ADDON because GOL patches them.
   OX3000. BettIR's L-key hook and power buttons skip it.
 - BettIR Stepper user actions (shipped as "not implemented") -> `OKS_fnc_BettIR_onStepper`.
   OX3000: `OKS_fnc_OX3000_AdjustStrength`. Other BettIR devices: their `onStepperUp/Down`.
-- `BettIR_NVG_fnc_validateUnitLight` -> GOL copy. Intensity = `OKS_NVGIllum_Level` x 0.075
-  (100% = 0.375, half of BettIR stock 0.75). The level is a public unit variable.
+- `BettIR_NVG_fnc_validateUnitLight` -> GOL copy. Intensity = `OKS_NVGIllum_Level` x 0.0525
+  (100% = 0.2625, 35% of BettIR stock 0.75). The level is a public unit variable.
 - Strength swaps the variant in place and re-enables the light after 0.1 s.
 
 ## Light values
 
 - IR: soft spot, inner 4 / outer 32 deg, coneFadeCoef 8, no ambient.
   Intensity 10 / 15 / 22 / 32 / 45. Attenuation follows the BettIR DBAL preset.
-- Visible: intensity 80 / 140 / 220 / 310 / 410, outer 40-48 deg, coneFadeCoef 8-5.
+- Visible: intensity 20 / 35 / 55 / 78 / 100, ambient 0.04-0.09, outer 40-48 deg, coneFadeCoef 8-5.
 - Tune in `configs/compat/compat_ace_irlight.hpp`.
 
 ## Legacy classes

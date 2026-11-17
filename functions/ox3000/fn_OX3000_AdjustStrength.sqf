@@ -47,7 +47,7 @@ private _showHint = {
 private _state = [_item] call OKS_fnc_OX3000_ParseClass;
 if ((_state get "Mode") == "LS") exitWith {
     if (_step != 0) then {
-        ["IR Laser", "No strength setting"] call _showHint;
+        ["OX3000 IR", "No strength setting"] call _showHint;
     };
     false
 };
@@ -60,7 +60,7 @@ if (diag_tickTime < (missionNamespace getVariable ["OKS_OX3000_NextAdjustTime", 
 private _steps = ["P1", "P2", "P3", "P4", "P5"];
 private _index = _steps find (_state get "Power");
 private _newIndex = ((_index + _step) max 0) min ((count _steps) - 1);
-private _modeName = ["IR Illuminator", "Flashlight"] select ((_state get "Mode") == "FL");
+private _modeName = ["OX3000 Dual", "OX3000 Flashlight"] select ((_state get "Mode") == "FL");
 
 if (_newIndex != _index) then {
     _state set ["Power", _steps select _newIndex];

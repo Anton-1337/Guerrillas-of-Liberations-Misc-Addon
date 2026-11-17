@@ -3,7 +3,7 @@
  *
  * Same reconcile logic as BettIR NVG (events + 1 s correction loop), but the lit
  * intensity follows the unit's GOL level instead of BettIR's fixed 0.75.
- * OKS_NVGIllum_Level 1-5 = 20-100%, where 100% = 0.375 (half of BettIR stock).
+ * OKS_NVGIllum_Level 1-5 = 20-100%, where 100% = 0.2625 (35% of BettIR stock 0.75).
  *
  * Arguments:
  * 0: Unit <OBJECT>
@@ -30,7 +30,7 @@ if (_shouldBeLit) exitWith {
         _light = [_unit] call BettIR_NVG_fnc_createLight;
     };
     private _level = ((_unit getVariable ["OKS_NVGIllum_Level", 2]) max 1) min 5;
-    _light setLightIntensity (_level * 0.075);
+    _light setLightIntensity (_level * 0.042);
 };
 
 if (!isNull _light) then {
