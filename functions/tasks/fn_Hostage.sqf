@@ -158,7 +158,9 @@ if(_TaskOnStart) then {
 };
 
 // Spawn new thread to allow waitUntil calls
-0 spawn {
+[_HostageDebug, _TaskId, _TaskArray, _TaskDescription, _TaskPosition, _TaskOnStart, _Units] spawn {
+  params ["_HostageDebug", "_TaskId", "_TaskArray", "_TaskDescription", "_TaskPosition", "_TaskOnStart", "_Units"];
+
   waitUntil {
     sleep 5;
     {animationState _X == "acts_aidlpsitmstpssurwnondnon_loop"} count _Units == 0 
